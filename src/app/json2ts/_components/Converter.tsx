@@ -10,7 +10,7 @@ import { useToast } from '@/components/ui/use-toast'
 const Converter: React.FC = () => {
   const { toast } = useToast()
 
-  const [input, setInput] = useLocalStorage('json2ts', '{}')
+  const [input, setInput] = useLocalStorage('json2ts', '')
   const [output, setOutput] = useState('')
 
   const convert = () => {
