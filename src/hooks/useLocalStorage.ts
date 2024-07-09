@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react'
 
 export default function useLocalStorage<T>(key: string, defaultValue: T) {
   const [value, setValue] = useState(() => {
-    const localData = localStorage.getItem(key)
-    if (localData) {
-      try {
-        return JSON.parse(localData) as T
-      } catch (error) {
-        /* empty */
+    if (typeof window !== 'undefined') {
+      const localData = localStorage.getItem(key)
+      if (localData) {
+        try {
+          return JSON.parse(localData) as T
+        } catch (error) {
+          /* empty */
+        }
       }
     }
     return defaultValue
